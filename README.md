@@ -1,1 +1,1 @@
-# react-native-users-list
+This project uses React Native, Expo, TypeScript, and libraries such as "@react-navigation/native", "@react-navigation/stack", "axios", "react-native-gesture-handler", "react-native-reanimated", "react-native-safe-area-context", "react-native-safe-area-view", "react-native-text-gradient", "react-navigation", etc.
