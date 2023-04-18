@@ -8,6 +8,7 @@ import useFetch from '@hooks/useFetch';
 import { User } from '@src/types';
 import { ROUTES } from '@src/routes';
 import { getRandomUsers } from '../helpers';
+import SkeletonCard from '@src/comps/Skeleton/Card/SkeletonCard';
 
 const UsersList: FC = (): JSX.Element => {
   const { BASE_URL, USERS } = ROUTES;
@@ -20,11 +21,15 @@ const UsersList: FC = (): JSX.Element => {
       {error && (
         <AlertMessage title={'Error'} message={'Users not available'} />
       )}
-      {loading && <ActivityIndicator size="large" color={theme.colors.white} />}
+      {loading && !users && (
+        <ActivityIndicator size="large" color={theme.colors.white} />
+      )}
       {users && (
         <FlatList
           data={users}
-          renderItem={({ item }) => <Card user={item} />}
+          renderItem={({ item }) =>
+            loading ? <SkeletonCard /> : <Card user={item} />
+          }
           keyExtractor={(item) => item.id.toString()}
           ListHeaderComponent={
             <ListHeaderComp title={`Users: ${users?.length}`} />
