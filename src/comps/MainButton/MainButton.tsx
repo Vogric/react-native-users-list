@@ -1,17 +1,42 @@
-import { FC } from 'react';
-import { View, Pressable, Text } from 'react-native';
+import { FC, useRef } from 'react';
+import { View, Pressable, Animated } from 'react-native';
 import styles from './styles';
+import { handleApplyAnimation, handleResetAnimation } from './helpers';
 
-interface MainButtonProps {
+export interface MainButtonProps {
   text: string;
-  navigateTo?: () => void;
+  navigateTo: () => void;
+  resetAnimation?: boolean;
 }
 
-const MainButton: FC<MainButtonProps> = ({ text, navigateTo }): JSX.Element => {
+const MainButton: FC<MainButtonProps> = ({
+  text,
+  navigateTo,
+  resetAnimation,
+}): JSX.Element => {
+  const translateYValue = useRef(new Animated.Value(0)).current;
+
+  const animatedStyle = {
+    transform: [{ translateY: translateYValue }],
+  };
+
+  const handlePressIn = (): void => {
+    if (navigateTo) {
+      navigateTo();
+    }
+    handleApplyAnimation(translateYValue);
+  };
+
+  if (resetAnimation) {
+    handleResetAnimation(translateYValue);
+  }
+
   return (
     <View style={styles.container}>
-      <Pressable style={styles.button} onPress={navigateTo}>
-        <Text style={styles.textButton}>{text}</Text>
+      <Pressable onPressIn={handlePressIn}>
+        <Animated.View style={[styles.button, animatedStyle]}>
+          <Animated.Text style={styles.textButton}>{text}</Animated.Text>
+        </Animated.View>
       </Pressable>
     </View>
   );
