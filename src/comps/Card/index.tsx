@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { View, Image, Text } from 'react-native';
 import styles from './styles';
-import { User } from '../../types/User';
+import { User } from '@src/types';
 
 interface CardProps {
   user: User;

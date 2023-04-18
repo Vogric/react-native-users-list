@@ -1,4 +1,4 @@
-import { User } from '../types/User';
+import { User } from '@src/types';
 
 export const sliceArray = (
   arr: User[] | null,
