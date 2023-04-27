@@ -1,4 +1,6 @@
-https://user-images.githubusercontent.com/53317134/234964910-f23b2771-5f60-44dd-895c-da6b17e08809.mp4
+https://user-images.githubusercontent.com/53317134/234969202-66a86fa2-9556-4164-a197-3fa3f3dd5ae1.mp4
+
+
 
   #### Main techs used in this project
     
