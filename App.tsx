@@ -1,6 +1,19 @@
 import { FC } from 'react';
-import AppNavigator from '@navigation/AppNavigator';
+import { Provider } from 'react-redux';
+import store from '@src/store';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import AppNavigator from '@src/navigation/AppNavigator';
 
-const App: FC = (): JSX.Element => <AppNavigator />;
+const queryClient = new QueryClient();
+
+const App: FC = (): JSX.Element => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

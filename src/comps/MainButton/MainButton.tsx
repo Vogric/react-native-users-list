@@ -7,12 +7,14 @@ export interface MainButtonProps {
   text: string;
   navigateTo: () => void;
   resetAnimation?: boolean;
+  isValidUserNumberInput: () => boolean;
 }
 
 const MainButton: FC<MainButtonProps> = ({
   text,
   navigateTo,
   resetAnimation,
+  isValidUserNumberInput,
 }): JSX.Element => {
   const translateYValue = useRef(new Animated.Value(0)).current;
 
@@ -21,10 +23,10 @@ const MainButton: FC<MainButtonProps> = ({
   };
 
   const handlePressIn = (): void => {
-    if (navigateTo) {
+    if (navigateTo && isValidUserNumberInput()) {
       navigateTo();
+      handleApplyAnimation(translateYValue);
     }
-    handleApplyAnimation(translateYValue);
   };
 
   if (resetAnimation) {

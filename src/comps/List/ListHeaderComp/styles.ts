@@ -4,7 +4,7 @@ import { theme } from '@src/theme';
 const styles = StyleSheet.create({
   title: {
     alignSelf: 'center',
-    marginTop: 30,
+    marginTop: 105,
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 26,

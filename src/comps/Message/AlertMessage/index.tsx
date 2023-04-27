@@ -6,7 +6,10 @@ interface AlertMessageProps {
   message: string;
 }
 
-const AlertMessage = ({ title, message }: AlertMessageProps) => {
+const AlertMessage = ({
+  title,
+  message,
+}: AlertMessageProps): JSX.Element | null => {
   const navigation = useNavigation();
 
   Alert.alert(

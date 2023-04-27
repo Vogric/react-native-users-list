@@ -1,5 +1,5 @@
 import { User } from '@src/types';
-import { shuffleArray, sliceArray } from '@src/utils';
+import { shuffleArray, sliceArray } from '@src/utils/arrays';
 
 export const getRandomUsers = (
   users: User[] | null,
